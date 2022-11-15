@@ -9,14 +9,7 @@ exports.listarMascotas = async (event, context, callback) => {
         TableName : mascotasTable,
     };
 
-    const data = await db.scan(params).promise();
-    const items = [];
-    if(data && data.Items) {        
-        data.Items.forEach(element => {
-            items.push(element);
-        });
-    }
-
+   
     const response = {
         statusCode: 200,
         body: JSON.stringify(items),
